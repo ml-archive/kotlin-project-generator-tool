@@ -1,4 +1,4 @@
-package views.controllers
+package dk.nodes.generator.views.controllers
 
 import javafx.application.Platform
 import javafx.event.ActionEvent
@@ -9,8 +9,8 @@ import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Priority
 import javafx.stage.DirectoryChooser
-import models.ProjectGeneratorListener
-import templating.ProjectGenerator
+import dk.nodes.generator.models.ProjectGeneratorListener
+import dk.nodes.generator.templating.ProjectGenerator
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -31,7 +31,7 @@ class MainViewController : ProjectGeneratorListener {
     private val isValidPackageName: Boolean
         get() {
             val packageNameValue = textFieldProjectName.text.trim()
-            val packageNameArray = packageNameValue.split(".")
+            val packageNameArray = packageNameValue.split("")
             return packageNameArray.size == 3
         }
 

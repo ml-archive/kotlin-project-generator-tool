@@ -1,8 +1,8 @@
-package templating
+package dk.nodes.generator.templating
 
 import io.reactivex.Completable
-import models.Constants
-import util.endsWith
+import dk.nodes.generator.models.Constants
+import dk.nodes.generator.util.endsWith
 import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.Files

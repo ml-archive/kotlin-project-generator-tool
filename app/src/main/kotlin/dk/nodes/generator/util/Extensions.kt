@@ -1,4 +1,4 @@
-package util
+package dk.nodes.generator.util
 
 import java.io.File
 

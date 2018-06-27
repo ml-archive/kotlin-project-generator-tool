@@ -1,8 +1,8 @@
-package templating
+package dk.nodes.generator.templating
 
 import io.reactivex.schedulers.Schedulers
 import javafx.application.Platform
-import models.ProjectGeneratorListener
+import dk.nodes.generator.models.ProjectGeneratorListener
 import java.io.File
 import java.util.concurrent.TimeUnit
 

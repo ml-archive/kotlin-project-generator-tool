@@ -1,7 +1,7 @@
-package templating
+package dk.nodes.generator.templating
 
 import io.reactivex.Completable
-import models.Constants
+import dk.nodes.generator.models.Constants
 import org.eclipse.jgit.api.Git
 import java.io.File
 

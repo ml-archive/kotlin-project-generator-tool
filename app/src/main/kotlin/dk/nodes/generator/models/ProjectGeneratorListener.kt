@@ -1,4 +1,4 @@
-package models
+package dk.nodes.generator.models
 
 interface ProjectGeneratorListener {
     fun onSuccess()

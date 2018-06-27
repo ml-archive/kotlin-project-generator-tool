@@ -1,4 +1,4 @@
-package models
+package dk.nodes.generator.models
 
 object Constants {
     val baseRepositoryUrl: String = "https://github.com/nodes-android/kotlin-template.git"
