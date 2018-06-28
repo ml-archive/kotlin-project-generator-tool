@@ -17,8 +17,8 @@ class DirectoryNameReplacer(
         return Completable.create {
             source.copyRecursively(destination, true)
 
-            val splitDefaultPackageName = Constants.defaultPackageName.split("")
-            val splitPackageName = packageName.split("")
+            val splitDefaultPackageName = Constants.defaultPackageName.split(".")
+            val splitPackageName = packageName.split(".")
 
             if (splitPackageName.size != 3 || splitDefaultPackageName.size != 3) {
                 println("Invalid Package Name")

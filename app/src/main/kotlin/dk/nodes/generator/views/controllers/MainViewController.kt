@@ -1,5 +1,7 @@
 package dk.nodes.generator.views.controllers
 
+import dk.nodes.generator.models.ProjectGeneratorListener
+import dk.nodes.generator.templating.ProjectGenerator
 import javafx.application.Platform
 import javafx.event.ActionEvent
 import javafx.fxml.FXML
@@ -9,8 +11,6 @@ import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Priority
 import javafx.stage.DirectoryChooser
-import dk.nodes.generator.models.ProjectGeneratorListener
-import dk.nodes.generator.templating.ProjectGenerator
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -31,7 +31,8 @@ class MainViewController : ProjectGeneratorListener {
     private val isValidPackageName: Boolean
         get() {
             val packageNameValue = textFieldProjectName.text.trim()
-            val packageNameArray = packageNameValue.split("")
+            val packageNameArray = packageNameValue.split(".")
+            println(packageNameArray)
             return packageNameArray.size == 3
         }
 
@@ -127,8 +128,8 @@ class MainViewController : ProjectGeneratorListener {
         textArea.isEditable = false
         textArea.isWrapText = true
 
-        textArea.setMaxWidth(java.lang.Double.MAX_VALUE)
-        textArea.setMaxHeight(java.lang.Double.MAX_VALUE)
+        textArea.maxWidth = java.lang.Double.MAX_VALUE
+        textArea.maxHeight = java.lang.Double.MAX_VALUE
         GridPane.setVgrow(textArea, Priority.ALWAYS)
         GridPane.setHgrow(textArea, Priority.ALWAYS)
 
@@ -141,6 +142,8 @@ class MainViewController : ProjectGeneratorListener {
         alert.dialogPane.expandableContent = expContent
 
         alert.showAndWait()
+
+        exitApplication()
     }
 
     private fun setLoading(isLoading: Boolean) {
