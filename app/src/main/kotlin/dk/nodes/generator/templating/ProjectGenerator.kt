@@ -1,8 +1,8 @@
 package dk.nodes.generator.templating
 
+import dk.nodes.generator.models.ProjectGeneratorListener
 import io.reactivex.schedulers.Schedulers
 import javafx.application.Platform
-import dk.nodes.generator.models.ProjectGeneratorListener
 import java.io.File
 import java.util.concurrent.TimeUnit
 
@@ -22,18 +22,16 @@ class ProjectGenerator(private val listener: ProjectGeneratorListener) {
             field.mkdirs()
             return field
         }
-    private val gitCloner = GitCloner(source)
-    private val directoryNameReplacer = DirectoryNameReplacer(packageName, source, destination)
-    private val packageNameReplacer = PackageNameReplacer(packageName, destination)
 
     fun generate() {
         runGitCloner()
     }
 
     private fun runGitCloner() {
-        gitCloner.clone()
-                .andThen(packageNameReplacer.replace())
-                .andThen(directoryNameReplacer.replace())
+        GitCloner(source)
+                .clone()
+                .andThen(PackageNameReplacer(packageName, destination).replace())
+                .andThen(DirectoryNameReplacer(packageName, source, destination).replace())
                 .delay(1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(Schedulers.computation())
